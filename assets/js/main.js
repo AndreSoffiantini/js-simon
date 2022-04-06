@@ -39,6 +39,8 @@ console.log(example); */
 function printNumbers(numbers) {
 
     const numbersList = document.getElementById("numbersList");
+    // La lista si resetta ogni volta che viene premuto Start
+    numbersList.innerHTML = "";
 
     for (let index = 0; index < numbers.length; index++) {
         let element = numbers[index];
@@ -49,7 +51,23 @@ function printNumbers(numbers) {
 
 }
 
-let example = generateRandomNumbers(5);
+/* let example = generateRandomNumbers(5);
 console.log(example);
 console.log(typeof(example));
-printNumbers(example);
+printNumbers(example); */
+
+// Far generare e stampare la lista di numeri al click del pulsante Start
+
+/**
+ * La funzione al click del pulsante Start genera 5 numeri casuali e li stampa a schermo
+ * @param {*} event L'evento scatenante (il click)
+ */
+function handleClick(event) {
+
+    const numbers = generateRandomNumbers(5);
+    printNumbers(numbers);
+
+}
+
+const startBtn = document.getElementById("startBtn");
+startBtn.addEventListener("click", handleClick);
