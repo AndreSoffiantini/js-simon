@@ -26,7 +26,30 @@ function generateRandomNumbers(size) {
 
 }
 
+/* let example = generateRandomNumbers(5);
+console.log(example); */
+
+// Creare una funzione che stampi un li in numbersList, ognuno contenente un numero dell'array di input
+
+/**
+ * La funzione stampa a schermo i numeri contenuti nell'array "numbers" all'interno 
+ * di una lista non ordinata
+ * @param {object} numbers 
+ */
+function printNumbers(numbers) {
+
+    const numbersList = document.getElementById("numbersList");
+
+    for (let index = 0; index < numbers.length; index++) {
+        let element = numbers[index];
+        let listItem = document.createElement("li");
+        listItem.innerText = element;
+        numbersList.appendChild(listItem);
+    }
+
+}
+
 let example = generateRandomNumbers(5);
 console.log(example);
-
-// Stampare in pagina i numeri generati
+console.log(typeof(example));
+printNumbers(example);
