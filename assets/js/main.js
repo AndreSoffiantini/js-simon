@@ -65,10 +65,11 @@ printNumbers(example); */
  */
 function handleClick(event) {
 
+    document.getElementById("result").innerHTML = "";
     numbers = generateRandomNumbers(5);
     printNumbers(numbers);
     createTimer(30);
-    setTimeout(readInput, 31000);
+    setTimeout(readInput, 30000);
 
 }
 
@@ -84,13 +85,15 @@ startBtn.addEventListener("click", handleClick);
 function createTimer(seconds) {
 
     const timer = document.getElementById("timer");
+    timer.innerText = seconds;
 
     let clock = setInterval(function() {
 
-        timer.innerText = seconds--;
+        timer.innerText = --seconds;
         //console.log(seconds);
 
-        if (seconds < 0) {
+        if (seconds == 0) {
+            timer.innerText = "";
             clearInterval(clock);
         }
 
