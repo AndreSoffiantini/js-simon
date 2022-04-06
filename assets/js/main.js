@@ -65,7 +65,7 @@ printNumbers(example); */
  */
 function handleClick(event) {
 
-    document.getElementById("result").innerHTML = "";
+    reset();
     numbers = generateRandomNumbers(5);
     printNumbers(numbers);
     createTimer(30);
@@ -85,6 +85,7 @@ startBtn.addEventListener("click", handleClick);
 function createTimer(seconds) {
 
     const timer = document.getElementById("timer");
+    timer.innerText = "";
     timer.innerText = seconds;
 
     let clock = setInterval(function() {
@@ -137,5 +138,11 @@ function readInput() {
         result.innerHTML = `Numeri ricordati: ${correctValues.length} [${correctValues}]`;
 
     }
+
+}
+
+function reset() {
+
+    document.getElementById("result").innerHTML = "";
 
 }
