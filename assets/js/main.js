@@ -46,6 +46,7 @@ function printNumbers(numbers) {
         let element = numbers[index];
         let listItem = document.createElement("li");
         listItem.innerText = element;
+        listItem.style.margin = "0 0.5rem";
         numbersList.appendChild(listItem);
     }
 
@@ -66,8 +67,28 @@ function handleClick(event) {
 
     const numbers = generateRandomNumbers(5);
     printNumbers(numbers);
+    createTimer(30);
 
 }
 
 const startBtn = document.getElementById("startBtn");
 startBtn.addEventListener("click", handleClick);
+
+// Creare una funzione per generare il timer (ad ogni secondo stampi numeri decrescenti a schermo)
+
+function createTimer(seconds) {
+
+    const timer = document.getElementById("timer");
+
+    let clock = setInterval(function() {
+
+        timer.innerText = seconds--;
+        //console.log(seconds);
+
+        if (seconds < 0) {
+            clearInterval(clock);
+        }
+
+    }, 1000);
+
+}
