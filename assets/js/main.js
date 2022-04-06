@@ -65,9 +65,11 @@ printNumbers(example); */
  */
 function handleClick(event) {
 
-    const numbers = generateRandomNumbers(5);
+    numbers = generateRandomNumbers(5);
     printNumbers(numbers);
-    createTimer(30);
+    createTimer(10);
+    setTimeout(readInput, 11000);
+
 
 }
 
@@ -76,6 +78,10 @@ startBtn.addEventListener("click", handleClick);
 
 // Creare una funzione per generare il timer (ad ogni secondo stampi numeri decrescenti a schermo)
 
+/**
+ * La funzione genera un timer decrescente della durata di "seconds"
+ * @param {number} seconds Il tempo di durata del timer (in secondi)
+ */
 function createTimer(seconds) {
 
     const timer = document.getElementById("timer");
@@ -90,5 +96,21 @@ function createTimer(seconds) {
         }
 
     }, 1000);
+
+}
+
+// Creare una funzione che legga gli input inseriti dall'utente
+
+function readInput() {
+
+    const inputs = [];
+
+    for (let index = 0; index < 5; index++) {
+        let input = parseInt(prompt("Inserisci il numero"));
+        inputs.push(input);
+    }
+
+    console.log(inputs);
+    console.log(numbers);
 
 }
