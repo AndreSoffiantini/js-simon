@@ -70,7 +70,6 @@ function handleClick(event) {
     createTimer(10);
     setTimeout(readInput, 11000);
 
-
 }
 
 const startBtn = document.getElementById("startBtn");
@@ -101,16 +100,39 @@ function createTimer(seconds) {
 
 // Creare una funzione che legga gli input inseriti dall'utente
 
+/**
+ * La funzione chiede all'utente di inserire dei numeri e restituisce quali e quanti dei numeri 
+ * inseriti compaiono nella lista generata randomicamente * 
+ */
 function readInput() {
 
     const inputs = [];
+    const correctValues = [];
+    const result = document.getElementById("result");
 
     for (let index = 0; index < 5; index++) {
         let input = parseInt(prompt("Inserisci il numero"));
         inputs.push(input);
+
+        if (numbers.includes(input)) {
+
+            correctValues.push(input);
+
+        }
     }
 
     console.log(inputs);
     console.log(numbers);
+    console.log(correctValues);
+
+    if (correctValues.length === 0) {
+
+        result.innerHTML = "Nessun numero corretto, riprova!";
+
+    } else {
+
+        result.innerHTML = `Numeri ricordati: ${correctValues.length} [${correctValues}]`;
+
+    }
 
 }
