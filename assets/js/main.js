@@ -67,8 +67,8 @@ function handleClick(event) {
 
     numbers = generateRandomNumbers(5);
     printNumbers(numbers);
-    createTimer(10);
-    setTimeout(readInput, 11000);
+    createTimer(30);
+    setTimeout(readInput, 31000);
 
 }
 
