@@ -66,14 +66,16 @@ printNumbers(example); */
 function handleClick(event) {
 
     reset();
-    numbers = generateRandomNumbers(5);
+    const randomNumbers = generateRandomNumbers(5);
+    numbers = randomNumbers;
     printNumbers(numbers);
     createTimer(30);
-    setTimeout(readInput, 30000);
+    startBtn.removeEventListener("click", handleClick);
 
 }
 
 const startBtn = document.getElementById("startBtn");
+let numbers = [];
 startBtn.addEventListener("click", handleClick);
 
 // Creare una funzione per generare il timer (ad ogni secondo stampi numeri decrescenti a schermo)
@@ -85,17 +87,18 @@ startBtn.addEventListener("click", handleClick);
 function createTimer(seconds) {
 
     const timer = document.getElementById("timer");
-    timer.innerText = "";
-    timer.innerText = seconds;
+    let time = seconds;
+    timer.innerText = time;
 
     let clock = setInterval(function() {
 
-        timer.innerText = --seconds;
+        timer.innerText = --time;
         //console.log(seconds);
 
-        if (seconds == 0) {
+        if (time == 0) {
             timer.innerText = "";
             clearInterval(clock);
+            setTimeout(readInput, 0);
         }
 
     }, 1000);
@@ -138,6 +141,8 @@ function readInput() {
         result.innerHTML = `Numeri ricordati: ${correctValues.length} [${correctValues}]`;
 
     }
+
+    startBtn.addEventListener("click", handleClick);
 
 }
 
