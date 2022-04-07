@@ -8,6 +8,29 @@
     <title>Simon</title>
 
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .numbersAndStart {
+            display: flex;
+        }
+        
         #startBtn {
             padding: 1rem;
             background-color: brown;
@@ -17,19 +40,28 @@
         #numbersList {
             list-style: none;
             display: flex;
+            align-items: center;
         }
     </style>
 </head>
 
 <body>
 
-    <input id="startBtn" type="button" value="Start">
+    <div class="container">
 
-    <ul id="numbersList"></ul>
+        <div class="numbersAndStart">
 
-    <h2 id="timer"></h2>
+            <input id="startBtn" type="button" value="Start">
 
-    <h1 id="result"></h1>
+            <ul id="numbersList"></ul>
+
+        </div>
+
+        <h2 style="font-size: 4rem" id="timer"></h2>
+
+        <h1 id="result"></h1>
+
+    </div>
 
     <script src="./assets/js/main.js"></script>
 </body>

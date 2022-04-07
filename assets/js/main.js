@@ -40,6 +40,7 @@ function printNumbers(numbers) {
 
     const numbersList = document.getElementById("numbersList");
     // La lista si resetta ogni volta che viene premuto Start
+    numbersList.style.display = "flex";
     numbersList.innerHTML = "";
 
     for (let index = 0; index < numbers.length; index++) {
@@ -65,9 +66,9 @@ printNumbers(example); */
  */
 function handleClick(event) {
 
-    reset();
-    const randomNumbers = generateRandomNumbers(5);
-    numbers = randomNumbers;
+    console.clear();
+    document.getElementById("result").innerHTML = "";
+    numbers = generateRandomNumbers(5);
     printNumbers(numbers);
     createTimer(30);
     startBtn.removeEventListener("click", handleClick);
@@ -87,8 +88,11 @@ startBtn.addEventListener("click", handleClick);
 function createTimer(seconds) {
 
     const timer = document.getElementById("timer");
+    const numbersList = document.getElementById("numbersList");
+    timer.style.display = "block";
     let time = seconds;
     timer.innerText = time;
+    console.log(`Numeri da indovinare: ${numbers}`);
 
     let clock = setInterval(function() {
 
@@ -96,7 +100,8 @@ function createTimer(seconds) {
         //console.log(seconds);
 
         if (time == 0) {
-            timer.innerText = "";
+            timer.style.display = "none";
+            numbersList.style.display = "none";
             clearInterval(clock);
             setTimeout(readInput, 0);
         }
@@ -128,9 +133,8 @@ function readInput() {
         }
     }
 
-    console.log(inputs);
-    console.log(numbers);
-    console.log(correctValues);
+    console.log(`Numeri inseriti: ${inputs}`);
+    console.log(`Numeri corretti: ${correctValues}`);
 
     if (correctValues.length === 0) {
 
@@ -142,12 +146,7 @@ function readInput() {
 
     }
 
+    // Riabilitare il pulsante Start dopo che il risultato è stato stampato
     startBtn.addEventListener("click", handleClick);
-
-}
-
-function reset() {
-
-    document.getElementById("result").innerHTML = "";
 
 }
